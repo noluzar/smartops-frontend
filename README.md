@@ -1,16 +1,117 @@
-# React + Vite
+# SmartOps – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive **Project & Task Management Dashboard** built with React and Vite.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+| Layer | Technology |
+|---|---|
+| Framework | React 18 |
+| Build Tool | Vite |
+| Styling | Tailwind CSS |
+| HTTP Client | Axios |
+| Routing | React Router v6 |
+| Forms | React Hook Form |
+| State Management | Zustand |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **JWT Authentication** — Secure login and registration with token persistence
+- **Protected Routes** — Automatic redirect for unauthenticated users
+- **Dashboard** — Real-time overview of projects and tasks with stats
+- **Project Management** — Create, view, and delete projects
+- **Kanban Task Board** — Visual task management with status columns
+- **Task Detail Modal** — Edit task title, description, status, and due date
+- **Responsive Design** — Works on desktop and tablet
+
+---
+
+## Pages
+
+| Page | Route | Description |
+|---|---|---|
+| Login | `/login` | JWT login form |
+| Register | `/register` | New user registration |
+| Dashboard | `/dashboard` | Overview with stats, projects and tasks |
+| Projects | `/projects` | Full project list with create/delete |
+| Tasks | `/tasks` | Kanban board with task management |
+
+---
+
+## Running Locally
+
+### Prerequisites
+- Node.js 18+
+- SmartOps backend running on `http://localhost:8080`
+
+### Steps
+
+**1. Clone the repository**
+```bash
+git clone https://github.com/YOUR_USERNAME/smartops-frontend.git
+cd smartops-frontend
+```
+
+**2. Install dependencies**
+```bash
+npm install
+```
+
+**3. Start the development server**
+```bash
+npm run dev
+```
+
+**4. Open in browser**
+```
+http://localhost:5173
+```
+
+---
+
+## Backend
+
+This frontend connects to the [SmartOps Backend API](https://github.com/YOUR_USERNAME/smartops).
+
+Make sure the backend is running before starting the frontend.
+
+---
+
+## Project Structure
+```
+src/
+├── api/
+│   └── axios.js          # Axios instance with JWT interceptor
+├── store/
+│   └── authStore.js      # Zustand auth state management
+├── pages/
+│   ├── Login.jsx         # Login page
+│   ├── Register.jsx      # Register page
+│   ├── Dashboard.jsx     # Main dashboard
+│   ├── Projects.jsx      # Project management
+│   └── Tasks.jsx         # Kanban task board
+├── components/
+│   └── ProtectedRoute.jsx # Route guard
+├── App.jsx               # Routes configuration
+└── main.jsx              # Entry point
+```
+
+---
+
+## Authentication Flow
+
+1. User registers or logs in
+2. JWT token is stored in `localStorage`
+3. Axios interceptor attaches token to every request
+4. Zustand manages auth state across the app
+5. Protected routes redirect unauthenticated users to `/login`
+
+---
+
+## License
+
+MIT License — feel free to use this project as a reference or template.
